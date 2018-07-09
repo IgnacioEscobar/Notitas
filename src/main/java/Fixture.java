@@ -1,4 +1,6 @@
 import model.Alumno;
+import model.Concepto;
+import model.NotaConceptual;
 import model.NotaNumerica;
 import model.Tarea;
 
@@ -17,6 +19,10 @@ public class Fixture {
         Tarea tarea2 = new Tarea("2 Parcial");
         tarea2.evaluar(new NotaNumerica(7));
         alumno.asignarTarea(tarea2);
+        
+        Tarea tarea4 = new Tarea("Trabajo practico");
+        tarea4.evaluar(new NotaConceptual(Concepto.B));
+        alumno.asignarTarea(tarea4);
         
         Tarea tarea3 = new Tarea("Final");
         tarea3.evaluar(new NotaNumerica(9));
