@@ -10,18 +10,18 @@ import org.uqbar.arena.windows.Dialog;
 import org.uqbar.arena.windows.SimpleWindow;
 import org.uqbar.arena.windows.WindowOwner;
 
+import model.Alumno;
 import model.Tarea;
-import ui.viewModels.PrincipalViewModel;
 
-public class VentanaPrincipal extends SimpleWindow<PrincipalViewModel>{
+public class VentanaPrincipal extends SimpleWindow<Alumno>{
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 6180403924383779129L;
 
-	public VentanaPrincipal(WindowOwner parent) {
-		super(parent, new PrincipalViewModel());
+	public VentanaPrincipal(WindowOwner parent, Alumno model) {
+		super(parent, model);
 	}
 
 	@Override
@@ -38,16 +38,16 @@ public class VentanaPrincipal extends SimpleWindow<PrincipalViewModel>{
 		alumnoPanel.setLayout(new ColumnLayout(2));
 		
 		new Label(alumnoPanel).setText("Alumno:");
-		new Label(alumnoPanel).bindValueToProperty("alumno.nombre");
+		new Label(alumnoPanel).bindValueToProperty("nombre");
 		new Label(alumnoPanel).setText("Legajo:");
-		new Label(alumnoPanel).bindValueToProperty("alumno.legajo");
+		new Label(alumnoPanel).bindValueToProperty("legajo");
 		new Label(alumnoPanel).setText("Usuario Github:");
-		new Label(alumnoPanel).bindValueToProperty("alumno.usuarioGitHub");
+		new Label(alumnoPanel).bindValueToProperty("usuarioGitHub");
 		
         //  Asignacion
         Table<Tarea> tablaTareas = new Table<Tarea>(mainPanel, Tarea.class);
         tablaTareas.setNumberVisibleRows(5);
-        tablaTareas.bindItemsToProperty("alumno.tareas");
+        tablaTareas.bindItemsToProperty("tareas");
 
         Column<Tarea> columnaDescripcion = new Column<Tarea>(tablaTareas);
         columnaDescripcion.setTitle("Descripcion");
@@ -60,7 +60,7 @@ public class VentanaPrincipal extends SimpleWindow<PrincipalViewModel>{
 	}
 	
 	protected void modificarAlumno() {
-        Dialog<PrincipalViewModel> actualizarDatos = new VentanaActualizarDatos(this);
+        Dialog<Alumno> actualizarDatos = new VentanaActualizarDatos(this,this.getModelObject());
         actualizarDatos.open();
 	}
 	

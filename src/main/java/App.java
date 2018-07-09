@@ -1,8 +1,6 @@
 import org.uqbar.arena.Application;
 import org.uqbar.arena.windows.Window;
 import model.Alumno;
-import model.NotaNumerica;
-import model.Tarea;
 import ui.windows.VentanaPrincipal;
 
 public class App extends Application{
@@ -16,6 +14,6 @@ public class App extends Application{
 
     @Override
     protected Window<?> createMainWindow() {
-        return new VentanaPrincipal(this);
+        return new VentanaPrincipal(this, Alumno.getInstance());
     }
 }
