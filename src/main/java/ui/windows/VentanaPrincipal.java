@@ -44,19 +44,24 @@ public class VentanaPrincipal extends SimpleWindow<Alumno>{
 		new Label(alumnoPanel).setText("Usuario Github:");
 		new Label(alumnoPanel).bindValueToProperty("usuarioGitHub");
 		
-        //  Asignacion
+        //  Tareas
         Table<Tarea> tablaTareas = new Table<Tarea>(mainPanel, Tarea.class);
         tablaTareas.setNumberVisibleRows(5);
         tablaTareas.bindItemsToProperty("tareas");
 
         Column<Tarea> columnaDescripcion = new Column<Tarea>(tablaTareas);
         columnaDescripcion.setTitle("Descripcion");
+        columnaDescripcion.setFixedSize(200);
         columnaDescripcion.bindContentsToProperty("descripcion");
+        
         Column<Tarea> columnaNota = new Column<Tarea>(tablaTareas);
         columnaNota.setTitle("Nota");
-        columnaNota.bindContentsToProperty("notaActual").setTransformer(new notaTransformer());;
+        columnaNota.setFixedSize(50);
+        columnaNota.bindContentsToProperty("notaActual").setTransformer(new notaTransformer());
+        
         Column<Tarea> columnaAprobado = new Column<Tarea>(tablaTareas);
         columnaAprobado.setTitle("Estado");
+        columnaAprobado.setFixedSize(100);
         columnaAprobado.bindContentsToProperty("notaActual").setTransformer(new aprobacionNotaTransformer());
 
 		

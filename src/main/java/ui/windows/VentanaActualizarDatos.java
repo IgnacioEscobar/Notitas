@@ -36,11 +36,11 @@ public class VentanaActualizarDatos extends TransactionalDialog<Alumno>{
 		Panel nuevoPanel = new Panel(mainPanel);
 		nuevoPanel.setLayout(new ColumnLayout(2));
 		new Label(nuevoPanel).setText("Alumno:");
-		new TextBox(nuevoPanel).setWidth(200).bindValueToProperty("nombre");
+		new TextBox(nuevoPanel).setWidth(150).bindValueToProperty("nombre");
 		new Label(nuevoPanel).setText("Legajo:");
-		new TextBox(nuevoPanel).setWidth(200).bindValueToProperty("legajo");
+		new TextBox(nuevoPanel).setWidth(150).bindValueToProperty("legajo");
 		new Label(nuevoPanel).setText("Usuario GitHub:");
-		new TextBox(nuevoPanel).setWidth(200).bindValueToProperty("usuarioGitHub");
+		new TextBox(nuevoPanel).setWidth(150).bindValueToProperty("usuarioGitHub");
 	}
 	
 }
