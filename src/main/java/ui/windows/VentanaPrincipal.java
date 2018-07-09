@@ -5,11 +5,13 @@ import org.uqbar.arena.widgets.Label;
 import org.uqbar.arena.widgets.Panel;
 import org.uqbar.arena.widgets.tables.Column;
 import org.uqbar.arena.widgets.tables.Table;
+import org.uqbar.arena.windows.Dialog;
 import org.uqbar.arena.windows.SimpleWindow;
 import org.uqbar.arena.windows.WindowOwner;
 
 import model.Alumno;
 import model.Tarea;
+import ui.viewModels.ActualizarDatosViewModel;
 import ui.viewModels.PrincipalViewModel;
 
 public class VentanaPrincipal extends SimpleWindow<PrincipalViewModel>{
@@ -53,7 +55,8 @@ public class VentanaPrincipal extends SimpleWindow<PrincipalViewModel>{
 	}
 	
 	protected void modificarAlumno() {
-		Alumno.getInstance().setNombre("Roque Fort");
+        Dialog<PrincipalViewModel> actualizarDatos = new VentanaActualizarDatos(this);
+        actualizarDatos.open();
 	}
 	
 }
