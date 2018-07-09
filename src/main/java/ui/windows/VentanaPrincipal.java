@@ -1,5 +1,6 @@
 package ui.windows;
 
+import org.uqbar.arena.layout.ColumnLayout;
 import org.uqbar.arena.widgets.Button;
 import org.uqbar.arena.widgets.Label;
 import org.uqbar.arena.widgets.Panel;
@@ -9,7 +10,6 @@ import org.uqbar.arena.windows.Dialog;
 import org.uqbar.arena.windows.SimpleWindow;
 import org.uqbar.arena.windows.WindowOwner;
 
-import model.Alumno;
 import model.Tarea;
 import ui.viewModels.PrincipalViewModel;
 
@@ -33,14 +33,20 @@ public class VentanaPrincipal extends SimpleWindow<PrincipalViewModel>{
 
 	@Override
 	protected void createFormPanel(Panel mainPanel) {
-		new Label(mainPanel).setText("Alumno:");
-		new Label(mainPanel).bindValueToProperty("alumno.nombre");
-		new Label(mainPanel).bindValueToProperty("alumno.legajo");
-		new Label(mainPanel).bindValueToProperty("alumno.usuarioGitHub");
+		
+		Panel alumnoPanel = new Panel(mainPanel);
+		alumnoPanel.setLayout(new ColumnLayout(2));
+		
+		new Label(alumnoPanel).setText("Alumno:");
+		new Label(alumnoPanel).bindValueToProperty("alumno.nombre");
+		new Label(alumnoPanel).setText("Legajo:");
+		new Label(alumnoPanel).bindValueToProperty("alumno.legajo");
+		new Label(alumnoPanel).setText("Usuario Github:");
+		new Label(alumnoPanel).bindValueToProperty("alumno.usuarioGitHub");
 		
         //  Asignacion
         Table<Tarea> tablaTareas = new Table<Tarea>(mainPanel, Tarea.class);
-        tablaTareas.setNumberVisibleRows(10);
+        tablaTareas.setNumberVisibleRows(5);
         tablaTareas.bindItemsToProperty("alumno.tareas");
 
         Column<Tarea> columnaDescripcion = new Column<Tarea>(tablaTareas);
