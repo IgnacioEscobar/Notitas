@@ -45,6 +45,9 @@ public class VentanaPrincipal extends SimpleWindow<PrincipalViewModel>{
         Column<Tarea> columnaDescripcion = new Column<Tarea>(tablaTareas);
         columnaDescripcion.setTitle("Descripcion");
         columnaDescripcion.bindContentsToProperty("descripcion");
+        Column<Tarea> columnaNota = new Column<Tarea>(tablaTareas);
+        columnaNota.setTitle("Nota");
+        columnaNota.bindContentsToProperty("notaActual");
 
 		
 	}
