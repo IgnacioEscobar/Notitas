@@ -54,7 +54,10 @@ public class VentanaPrincipal extends SimpleWindow<Alumno>{
         columnaDescripcion.bindContentsToProperty("descripcion");
         Column<Tarea> columnaNota = new Column<Tarea>(tablaTareas);
         columnaNota.setTitle("Nota");
-        columnaNota.bindContentsToProperty("notaActual");
+        columnaNota.bindContentsToProperty("notaActual").setTransformer(new notaTransformer());;
+        Column<Tarea> columnaAprobado = new Column<Tarea>(tablaTareas);
+        columnaAprobado.setTitle("Estado");
+        columnaAprobado.bindContentsToProperty("notaActual").setTransformer(new aprobacionNotaTransformer());
 
 		
 	}

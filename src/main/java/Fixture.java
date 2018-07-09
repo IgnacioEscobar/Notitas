@@ -6,12 +6,21 @@ public class Fixture {
 	
 	public static void init() {
 		Alumno alumno = Alumno.getInstance();
-        alumno.setNombre("Pepe Argento");
+        alumno.setNombre("Roque Fort");
         alumno.setLegajo(12312413);
-        alumno.setUsuarioGitHub("pepito");
+        alumno.setUsuarioGitHub("maiameee666");
+        
         Tarea tarea = new Tarea("1 Parcial");
-        tarea.evaluar(new NotaNumerica(8));
+        tarea.evaluar(new NotaNumerica(7));
         alumno.asignarTarea(tarea);
+        
+        Tarea tarea2 = new Tarea("2 Parcial");
+        tarea2.evaluar(new NotaNumerica(7));
+        alumno.asignarTarea(tarea2);
+        
+        Tarea tarea3 = new Tarea("Final");
+        tarea3.evaluar(new NotaNumerica(9));
+        alumno.asignarTarea(tarea3);
 	}
 
 }

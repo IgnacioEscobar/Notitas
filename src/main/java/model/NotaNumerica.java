@@ -1,14 +1,18 @@
 package model;
 
 public class NotaNumerica implements Nota{
-	private Integer nota;
+	private Integer valor;
 
 	public NotaNumerica(Integer nota) {
 		super();
-		this.nota = nota;
+		this.valor = nota;
 	}
 	
 	public Boolean aprobo() {
-		return nota >= 6;
+		return valor >= 6;
+	}
+	
+	public String valorEnTexto() {
+		return valor.toString();
 	}
 }

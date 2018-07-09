@@ -11,4 +11,8 @@ public class NotaConceptual implements Nota{
 	public Boolean aprobo() {
 		return nota != Concepto.M;
 	}
+	
+	public String valorEnTexto(){
+		return nota.name();
+	}
 }
