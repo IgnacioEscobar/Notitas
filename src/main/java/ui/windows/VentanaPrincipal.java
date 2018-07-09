@@ -31,6 +31,8 @@ public class VentanaPrincipal extends SimpleWindow<PrincipalViewModel>{
 	protected void createFormPanel(Panel mainPanel) {
 		new Label(mainPanel).setText("Alumno:");
 		new Label(mainPanel).bindValueToProperty("alumno.nombre");
+		new Label(mainPanel).bindValueToProperty("alumno.legajo");
+		new Label(mainPanel).bindValueToProperty("alumno.usuarioGitHub");
 	}
 	
 	protected void modificarAlumno() {

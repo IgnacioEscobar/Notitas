@@ -10,6 +10,8 @@ public class App extends Application{
         System.out.println("Lector de notas, inicializando...");
         Alumno alumno = Alumno.getInstance();
         alumno.setNombre("Pepe Argento");
+        alumno.setLegajo(12312413);
+        alumno.setUsuarioGitHub("pepito");
         new App().start();
     }
 
