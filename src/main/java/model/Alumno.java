@@ -4,8 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.uqbar.commons.utils.Observable;
+import org.uqbar.commons.utils.Transactional;
 
 @Observable
+@Transactional
 public class Alumno {
 	private static Alumno instancia = new Alumno();
 	

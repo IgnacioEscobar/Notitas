@@ -1,16 +1,16 @@
 package ui.windows;
 
+import org.uqbar.arena.aop.windows.TransactionalDialog;
 import org.uqbar.arena.layout.ColumnLayout;
 import org.uqbar.arena.widgets.Button;
 import org.uqbar.arena.widgets.Label;
 import org.uqbar.arena.widgets.Panel;
 import org.uqbar.arena.widgets.TextBox;
-import org.uqbar.arena.windows.Dialog;
 import org.uqbar.arena.windows.WindowOwner;
 
 import model.Alumno;
 
-public class VentanaActualizarDatos extends Dialog<Alumno>{
+public class VentanaActualizarDatos extends TransactionalDialog<Alumno>{
 
 	/**
 	 * 
@@ -26,6 +26,9 @@ public class VentanaActualizarDatos extends Dialog<Alumno>{
         new Button(actionsPanel)
 	        .setCaption("Aplicar")
 	        .onClick(this::accept);
+        new Button(actionsPanel)
+	        .setCaption("Cancelar")
+	        .onClick(this::cancel);
 	}
 
 	@Override
