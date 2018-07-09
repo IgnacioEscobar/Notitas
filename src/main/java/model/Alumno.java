@@ -1,5 +1,6 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.uqbar.commons.utils.Observable;
@@ -51,6 +52,7 @@ public class Alumno {
 	}
 
 	public Alumno() {
+		tareas = new ArrayList<Tarea>();
 	}
 	
 	public Alumno(String nombre, Integer legajo, String usuarioGitHub, List<Tarea> tareas) {

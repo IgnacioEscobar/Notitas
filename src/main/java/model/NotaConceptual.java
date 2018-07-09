@@ -1,6 +1,6 @@
 package model;
 
-public class NotaConceptual {
+public class NotaConceptual implements Nota{
 	private Concepto nota;
 
 	public NotaConceptual(Concepto nota) {

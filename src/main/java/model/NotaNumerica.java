@@ -1,6 +1,6 @@
 package model;
 
-public class NotaNumerica {
+public class NotaNumerica implements Nota{
 	private Integer nota;
 
 	public NotaNumerica(Integer nota) {

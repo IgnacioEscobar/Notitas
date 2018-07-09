@@ -3,10 +3,13 @@ package ui.windows;
 import org.uqbar.arena.widgets.Button;
 import org.uqbar.arena.widgets.Label;
 import org.uqbar.arena.widgets.Panel;
+import org.uqbar.arena.widgets.tables.Column;
+import org.uqbar.arena.widgets.tables.Table;
 import org.uqbar.arena.windows.SimpleWindow;
 import org.uqbar.arena.windows.WindowOwner;
 
 import model.Alumno;
+import model.Tarea;
 import ui.viewModels.PrincipalViewModel;
 
 public class VentanaPrincipal extends SimpleWindow<PrincipalViewModel>{
@@ -33,6 +36,17 @@ public class VentanaPrincipal extends SimpleWindow<PrincipalViewModel>{
 		new Label(mainPanel).bindValueToProperty("alumno.nombre");
 		new Label(mainPanel).bindValueToProperty("alumno.legajo");
 		new Label(mainPanel).bindValueToProperty("alumno.usuarioGitHub");
+		
+        //  Asignacion
+        Table<Tarea> tablaTareas = new Table<Tarea>(mainPanel, Tarea.class);
+        tablaTareas.setNumberVisibleRows(10);
+        tablaTareas.bindItemsToProperty("alumno.tareas");
+
+        Column<Tarea> columnaDescripcion = new Column<Tarea>(tablaTareas);
+        columnaDescripcion.setTitle("Descripcion");
+        columnaDescripcion.bindContentsToProperty("descripcion");
+
+		
 	}
 	
 	protected void modificarAlumno() {
