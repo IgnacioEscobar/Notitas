@@ -11,7 +11,6 @@ import org.uqbar.arena.windows.WindowOwner;
 
 import model.Alumno;
 import model.Tarea;
-import ui.viewModels.ActualizarDatosViewModel;
 import ui.viewModels.PrincipalViewModel;
 
 public class VentanaPrincipal extends SimpleWindow<PrincipalViewModel>{
