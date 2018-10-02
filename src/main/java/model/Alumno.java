@@ -3,6 +3,7 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.gson.annotations.SerializedName;
 import org.uqbar.commons.utils.Observable;
 import org.uqbar.commons.utils.Transactional;
 
@@ -15,9 +16,17 @@ public class Alumno {
 	public static Alumno getInstance() {
 		return instancia;
 	}
-	
+
+	@SerializedName("first_name")
 	private String nombre;
+
+    @SerializedName("last_name")
+	private String apellido;
+
+	@SerializedName("code")
 	private Integer legajo;
+
+	@SerializedName("github_user")
 	private String usuarioGitHub;
 	private List<Tarea> tareas;
 
@@ -64,8 +73,23 @@ public class Alumno {
 		this.usuarioGitHub = usuarioGitHub;
 		this.tareas = tareas;
 	}
-	
-	public void asignarTarea(Tarea unaTarea) {
+
+    public Alumno(String nombre, String apellido, Integer legajo, String usuarioGitHub) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.legajo = legajo;
+        this.usuarioGitHub = usuarioGitHub;
+    }
+
+    public String getApellido() {
+        return apellido;
+    }
+
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
+    }
+
+    public void asignarTarea(Tarea unaTarea) {
 		tareas.add(unaTarea);
 	}
 }
