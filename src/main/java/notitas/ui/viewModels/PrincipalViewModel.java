@@ -1,8 +1,8 @@
-package ui.viewModels;
+package notitas.ui.viewModels;
 
 import org.uqbar.commons.utils.Observable;
 
-import model.Alumno;
+import notitas.model.Alumno;
 
 @Observable
 public class PrincipalViewModel {

@@ -1,4 +1,4 @@
-package json;
+package notitas.json;
 
 import java.util.Arrays;
 import java.util.List;

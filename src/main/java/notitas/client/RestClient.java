@@ -1,4 +1,4 @@
-package client;
+package notitas.client;
 
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.ClientResponse;
@@ -17,7 +17,7 @@ public class RestClient {
     public String getResource(String resourceUrl){
         WebResource resource = createWebResource(resourceUrl);
         ClientResponse response = resource
-                .accept("application/json")
+                .accept("application/notitas.json")
                 .header(HttpHeaders.AUTHORIZATION, "Bearer " + TOKEN)
                 .get(ClientResponse.class);
         return validateAndReturn(response);
@@ -26,7 +26,7 @@ public class RestClient {
     public String putResource(String resourceUrl, String jsonString){
         WebResource resource = createWebResource(resourceUrl);
         ClientResponse response = resource
-                .type("application/json")
+                .type("application/notitas.json")
                 .header(HttpHeaders.AUTHORIZATION, "Bearer " + TOKEN)
                 .put(ClientResponse.class, jsonString);
         return validateAndReturn(response);

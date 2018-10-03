@@ -1,9 +1,9 @@
-package client;
+package notitas.client;
 
-import json.Asignaciones;
-import json.JSONParser;
-import model.Alumno;
-import model.Tarea;
+import notitas.json.Asignaciones;
+import notitas.json.JSONParser;
+import notitas.model.Alumno;
+import notitas.model.Tarea;
 
 import java.util.List;
 

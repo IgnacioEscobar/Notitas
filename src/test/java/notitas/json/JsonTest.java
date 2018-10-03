@@ -1,10 +1,7 @@
-package json;
+package notitas.json;
 
-import model.Alumno;
-import model.Tarea;
+import notitas.model.Alumno;
 import org.junit.Test;
-
-import java.util.List;
 
 import static junit.framework.TestCase.assertTrue;
 

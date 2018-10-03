@@ -1,4 +1,4 @@
-package client;
+package notitas.client;
 
 import org.junit.Test;
 

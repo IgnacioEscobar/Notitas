@@ -1,4 +1,4 @@
-package model;
+package notitas.model;
 
 public enum Concepto {
 	M,

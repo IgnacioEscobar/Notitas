@@ -1,7 +1,7 @@
-package json;
+package notitas.json;
 
 import com.google.gson.annotations.SerializedName;
-import model.Tarea;
+import notitas.model.Tarea;
 
 import java.util.List;
 

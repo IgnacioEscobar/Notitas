@@ -1,4 +1,4 @@
-package model;
+package notitas.model;
 
 import com.google.gson.annotations.SerializedName;
 import org.uqbar.commons.utils.Observable;

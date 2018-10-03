@@ -1,7 +1,7 @@
-package ui.windows;
+package notitas.ui.windows;
 
-import model.Alumno;
-import model.Tarea;
+import notitas.model.Alumno;
+import notitas.model.Tarea;
 import org.uqbar.arena.layout.ColumnLayout;
 import org.uqbar.arena.widgets.Button;
 import org.uqbar.arena.widgets.Label;
