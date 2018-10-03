@@ -60,7 +60,7 @@ public class VentanaPrincipal extends SimpleWindow<Alumno>{
 
         Column<Tarea> columnaAprobado = new Column<Tarea>(tablaTareas);
         columnaAprobado.setTitle("Estado");
-        columnaAprobado.setFixedSize(100);
+        columnaAprobado.setFixedSize(200);
         columnaAprobado.bindContentsToProperty("notaActual").setTransformer(new aprobacionNotaTransformer());
 
 

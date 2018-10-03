@@ -13,7 +13,7 @@ public class Tarea {
 
 	@SerializedName("grades")
 	private List<String> notas;
-	private String notaActual;
+	private String notaActual = "-1";
 
     public Tarea() {
     }
@@ -41,6 +41,9 @@ public class Tarea {
 	}
 
 	public String getNotaActual() {
+		if (notas.size() == 0) {
+			notaActual = "-1";
+		}
 		return notaActual;
 	}
 

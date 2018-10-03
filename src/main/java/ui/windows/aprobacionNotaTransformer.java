@@ -9,6 +9,8 @@ public class aprobacionNotaTransformer implements Transformer<String, String> {
         try {
             if (Integer.parseInt(nota) > 6) {
                 return "Aprobado";
+            } else if (Integer.parseInt(nota) == -1) {
+            	return "No hay notas cargadas";
             } else {
                 return "No Aprobado";
             }
