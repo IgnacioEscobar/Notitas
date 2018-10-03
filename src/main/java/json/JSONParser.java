@@ -18,6 +18,11 @@ public class JSONParser{
         Gson gson = generarGson();
         return Arrays.asList(gson.fromJson(string, claseDelObjeto));
     }
+    
+    public static String stringDesdeObjeto(Object objeto) {
+    	Gson gson = generarGson();
+    	return gson.toJson(objeto);
+    }
 
     /* PRIVATE METHODS*/
 

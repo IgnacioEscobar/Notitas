@@ -16,6 +16,10 @@ public class Alumno {
 	public static Alumno getInstance() {
 		return instancia;
 	}
+	
+	public static void setInstance(Alumno alumno) {
+		instancia = alumno;
+	}
 
 	@SerializedName("first_name")
 	private String nombre;

@@ -30,7 +30,7 @@ public class JsonTest {
     @Test
     public void parseAsignacionesTest(){
         Asignaciones asignacionesParseadas = JSONParser.objetoDesdeString(testAsignacionesGson, Asignaciones.class);
-        System.out.println(asignacionesParseadas.getTareas());
+        System.out.println(asignacionesParseadas.getTareas().get(0).getNotas());
         assertTrue("No implementado", false);
     }
 }
