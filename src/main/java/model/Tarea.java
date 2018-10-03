@@ -1,28 +1,35 @@
 package model;
 
+import com.google.gson.annotations.SerializedName;
+import org.uqbar.commons.utils.Observable;
+
 import java.util.ArrayList;
 import java.util.List;
 
-import org.uqbar.commons.utils.Observable;
-
 @Observable
 public class Tarea {
+	@SerializedName("description")
 	private String descripcion;
-	private List<Nota> notas;
-	private Nota notaActual;
-	
-	public List<Nota> getNotas() {
-		return notas;
-	}
 
-	public void setNotas(List<Nota> notas) {
-		this.notas = notas;
-	}
+	@SerializedName("grades")
+	private List<String> notas;
+	private String notaActual;
+
+    public Tarea() {
+    }
 
 	public Tarea(String descripcion) {
 		super();
-		notas = new ArrayList<Nota>();
+		notas = new ArrayList<String>();
 		this.descripcion = descripcion;
+	}
+
+	public List<String> getNotas() {
+		return notas;
+	}
+
+	public void setNotas(List<String> notas) {
+		this.notas = notas;
 	}
 	
 	public String getDescripcion() {
@@ -33,15 +40,15 @@ public class Tarea {
 		this.descripcion = descripcion;
 	}
 
-	public void setNotaActual(Nota notaActual) {
-		this.notaActual = notaActual;
-	}
-
-	public Nota getNotaActual() {
+	public String getNotaActual() {
 		return notaActual;
 	}
 
-	public void evaluar(Nota unaNota) {
+	public void setNotaActual(String notaActual) {
+		this.notaActual = notaActual;
+	}
+
+	public void evaluar(String unaNota) {
 		notas.add(unaNota);
 		this.notaActual = unaNota;
 	}

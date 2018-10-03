@@ -10,7 +10,7 @@ import org.uqbar.arena.windows.WindowOwner;
 
 import json.JSONParser;
 import model.Alumno;
-import rest.client.RestClient;
+import client.RestClient;
 
 public class VentanaActualizarDatos extends TransactionalDialog<Alumno>{
 
