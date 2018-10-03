@@ -3,15 +3,20 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.gson.annotations.SerializedName;
 import org.uqbar.commons.utils.Observable;
 
 @Observable
 public class Tarea {
+	@SerializedName("description")
 	private String descripcion;
 	private List<Nota> notas;
 	private Nota notaActual;
-	
-	public List<Nota> getNotas() {
+
+    public Tarea() {
+    }
+
+    public List<Nota> getNotas() {
 		return notas;
 	}
 

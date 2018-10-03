@@ -25,6 +25,7 @@ public class JSONParser{
 
     private static Gson generarGson() {
         Gson gson = new GsonBuilder()
+                .registerTypeAdapter(Asignaciones.class ,new AsignacionesDeserializer())
                 .create();
         return gson;
     }
