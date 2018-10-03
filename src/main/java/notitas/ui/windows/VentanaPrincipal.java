@@ -3,6 +3,7 @@ package notitas.ui.windows;
 import notitas.model.Alumno;
 import notitas.model.Tarea;
 import notitas.ui.utils.FormBuilder;
+import notitas.ui.utils.TableBuilder;
 import org.uqbar.arena.layout.ColumnLayout;
 import org.uqbar.arena.widgets.Button;
 import org.uqbar.arena.widgets.Label;
@@ -41,30 +42,16 @@ public class VentanaPrincipal extends SimpleWindow<Alumno>{
                 .buildOutput("Legajo:", "legajo")
                 .buildOutput("Usuario GitHub:", "usuarioGitHub");
 
-        //  Tareas
-        Table<Tarea> tablaTareas = new Table<Tarea>(mainPanel, Tarea.class);
-        tablaTareas.setNumberVisibleRows(5);
-        tablaTareas.bindItemsToProperty("tareas");
-
-        Column<Tarea> columnaDescripcion = new Column<Tarea>(tablaTareas);
-        columnaDescripcion.setTitle("Descripcion");
-        columnaDescripcion.setFixedSize(200);
-        columnaDescripcion.bindContentsToProperty("descripcion");
-
-        Column<Tarea> columnaNota = new Column<Tarea>(tablaTareas);
-        columnaNota.setTitle("Nota");
-        columnaNota.setFixedSize(50);
-        columnaNota.bindContentsToProperty("notaActual");
-
-        Column<Tarea> columnaAprobado = new Column<Tarea>(tablaTareas);
-        columnaAprobado.setTitle("Estado");
-        columnaAprobado.setFixedSize(200);
-        columnaAprobado.bindContentsToProperty("notaActual").setTransformer(new aprobacionNotaTransformer());
-
+        new TableBuilder(mainPanel,Tarea.class,"tareas")
+                .setNumberVisibleRows(5)
+                .buildColumn("Descripcion","descripcion",200)
+                .buildColumn("Nota","notaActual",50)
+                .buildColumn("Estado",200)
+                    .bindToPropertyWithTransformer("notaActual",new aprobacionNotaTransformer());
 
     }
 
-    protected void modificarAlumno() {
+    private void modificarAlumno() {
         Dialog<Alumno> actualizarDatos = new VentanaActualizarDatos(this,this.getModelObject());
         actualizarDatos.open();
     }
