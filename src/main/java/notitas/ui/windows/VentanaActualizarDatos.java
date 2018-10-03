@@ -1,6 +1,7 @@
 package notitas.ui.windows;
 
 import notitas.Configuracion;
+import notitas.ui.utils.FormBuilder;
 import org.uqbar.arena.aop.windows.TransactionalDialog;
 import org.uqbar.arena.layout.ColumnLayout;
 import org.uqbar.arena.widgets.Button;
@@ -46,19 +47,6 @@ public class VentanaActualizarDatos extends TransactionalDialog<Alumno>{
                 .buildInput("Alumno:", "nombre")
                 .buildInput("Legajo:", "legajo")
                 .buildInput("Usuario GitHub:", "usuarioGitHub");
-    }
-
-    class FormBuilder{
-        private Panel panel;
-        public FormBuilder(Panel panel) {
-            this.panel = panel;
-            panel.setLayout(new ColumnLayout(2));
-        }
-        public FormBuilder buildInput(String label, String propertyToBind){
-            new Label(panel).setText(label);
-            new TextBox(panel).setWidth(150).bindValueToProperty(propertyToBind);
-            return this;
-        }
     }
 
 }

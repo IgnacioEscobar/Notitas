@@ -2,6 +2,7 @@ package notitas.ui.windows;
 
 import notitas.model.Alumno;
 import notitas.model.Tarea;
+import notitas.ui.utils.FormBuilder;
 import org.uqbar.arena.layout.ColumnLayout;
 import org.uqbar.arena.widgets.Button;
 import org.uqbar.arena.widgets.Label;
@@ -34,14 +35,11 @@ public class VentanaPrincipal extends SimpleWindow<Alumno>{
     protected void createFormPanel(Panel mainPanel) {
 
         Panel alumnoPanel = new Panel(mainPanel);
-        alumnoPanel.setLayout(new ColumnLayout(2));
 
-        new Label(alumnoPanel).setText("Alumno:");
-        new Label(alumnoPanel).bindValueToProperty("nombre");
-        new Label(alumnoPanel).setText("Legajo:");
-        new Label(alumnoPanel).bindValueToProperty("legajo");
-        new Label(alumnoPanel).setText("Usuario Github:");
-        new Label(alumnoPanel).bindValueToProperty("usuarioGitHub");
+        new FormBuilder(alumnoPanel)
+                .buildOutput("Alumno:", "nombre")
+                .buildOutput("Legajo:", "legajo")
+                .buildOutput("Usuario GitHub:", "usuarioGitHub");
 
         //  Tareas
         Table<Tarea> tablaTareas = new Table<Tarea>(mainPanel, Tarea.class);
