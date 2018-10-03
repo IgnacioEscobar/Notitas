@@ -1,4 +1,4 @@
-package rest.client;
+package client;
 
 import org.junit.Test;
 
