@@ -1,10 +1,12 @@
 package json;
 
+import com.google.gson.annotations.SerializedName;
 import model.Tarea;
 
 import java.util.List;
 
 public class Asignaciones {
+    @SerializedName("assignments")
     private List<Tarea> tareas;
 
     public Asignaciones() {

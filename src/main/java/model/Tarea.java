@@ -10,6 +10,8 @@ import java.util.List;
 public class Tarea {
 	@SerializedName("description")
 	private String descripcion;
+
+	@SerializedName("grades")
 	private List<String> notas;
 	private String notaActual;
 
