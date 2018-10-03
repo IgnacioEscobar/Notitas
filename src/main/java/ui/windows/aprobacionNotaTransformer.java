@@ -2,13 +2,23 @@ package ui.windows;
 
 import org.apache.commons.collections15.Transformer;
 
-import model.Nota;
+public class aprobacionNotaTransformer implements Transformer<String, String> {
 
-public class aprobacionNotaTransformer implements Transformer<Nota,String> {
-
-	@Override
-	public String transform(Nota nota) {
-		return nota.aprobo() ? "Aprobado" : "Todavia no aprobado";
-	}
+    @Override
+    public String transform(String nota) {
+        try {
+            if (Integer.parseInt(nota) > 6) {
+                return "Aprobado";
+            } else {
+                return "No Aprobado";
+            }
+        } catch (NumberFormatException e) {
+            if (nota.contains("B") || nota.contains("R")) {
+                return "Aprobado";
+            } else {
+                return "No Aprobado";
+            }
+        }
+    }
 
 }
