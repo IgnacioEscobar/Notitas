@@ -42,13 +42,23 @@ public class VentanaActualizarDatos extends TransactionalDialog<Alumno>{
     @Override
     protected void createFormPanel(Panel mainPanel) {
         Panel nuevoPanel = new Panel(mainPanel);
-        nuevoPanel.setLayout(new ColumnLayout(2));
-        new Label(nuevoPanel).setText("Alumno:");
-        new TextBox(nuevoPanel).setWidth(150).bindValueToProperty("nombre");
-        new Label(nuevoPanel).setText("Legajo:");
-        new TextBox(nuevoPanel).setWidth(150).bindValueToProperty("legajo");
-        new Label(nuevoPanel).setText("Usuario GitHub:");
-        new TextBox(nuevoPanel).setWidth(150).bindValueToProperty("usuarioGitHub");
+        new FormBuilder(nuevoPanel)
+                .buildInput("Alumno:", "nombre")
+                .buildInput("Legajo:", "legajo")
+                .buildInput("Usuario GitHub:", "usuarioGitHub");
+    }
+
+    class FormBuilder{
+        private Panel panel;
+        public FormBuilder(Panel panel) {
+            this.panel = panel;
+            panel.setLayout(new ColumnLayout(2));
+        }
+        public FormBuilder buildInput(String label, String propertyToBind){
+            new Label(panel).setText(label);
+            new TextBox(panel).setWidth(150).bindValueToProperty(propertyToBind);
+            return this;
+        }
     }
 
 }

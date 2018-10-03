@@ -6,15 +6,15 @@ import com.sun.jersey.api.client.WebResource;
 
 import javax.ws.rs.core.HttpHeaders;
 
-public class RestClient {
+class RestClient {
     private String url;
     private String TOKEN = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiIxMTEyMjIzMzMiLCJybmQiOiJ5SXNmZFIwN2lIR3BRRmVjYU9KT2VRPT0ifQ.9pVJGUXhrJPQ-TptNCt971l0h_1dWqWgMrHAWXJchho";
 
-    public RestClient(String url) {
+    RestClient(String url) {
         this.url = url;
     }
 
-    public String getResource(String resourceUrl){
+    String getResource(String resourceUrl){
         WebResource resource = createWebResource(resourceUrl);
         ClientResponse response = resource
                 .accept("application/notitas.json")
@@ -23,7 +23,7 @@ public class RestClient {
         return validateAndReturn(response);
     }
 
-    public String putResource(String resourceUrl, String jsonString){
+    String putResource(String resourceUrl, String jsonString){
         WebResource resource = createWebResource(resourceUrl);
         ClientResponse response = resource
                 .type("application/notitas.json")
