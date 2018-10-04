@@ -3,12 +3,12 @@ package notitas.client;
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.WebResource;
+import notitas.Configuracion;
 
 import javax.ws.rs.core.HttpHeaders;
 
 class RestClient {
     private String url;
-    private String TOKEN = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiIxMTEyMjIzMzMiLCJybmQiOiJ5SXNmZFIwN2lIR3BRRmVjYU9KT2VRPT0ifQ.9pVJGUXhrJPQ-TptNCt971l0h_1dWqWgMrHAWXJchho";
 
     RestClient(String url) {
         this.url = url;
@@ -18,7 +18,7 @@ class RestClient {
         WebResource resource = createWebResource(resourceUrl);
         ClientResponse response = resource
                 .accept("application/notitas.json")
-                .header(HttpHeaders.AUTHORIZATION, "Bearer " + TOKEN)
+                .header(HttpHeaders.AUTHORIZATION, "Bearer " + Configuracion.token)
                 .get(ClientResponse.class);
         return validateAndReturn(response);
     }
@@ -27,7 +27,7 @@ class RestClient {
         WebResource resource = createWebResource(resourceUrl);
         ClientResponse response = resource
                 .type("application/notitas.json")
-                .header(HttpHeaders.AUTHORIZATION, "Bearer " + TOKEN)
+                .header(HttpHeaders.AUTHORIZATION, "Bearer " + Configuracion.token)
                 .put(ClientResponse.class, jsonString);
         return validateAndReturn(response);
     }
