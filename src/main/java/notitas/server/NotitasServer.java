@@ -1,6 +1,5 @@
 package notitas.server;
 
-import notitas.server.security.SecurityService;
 import spark.Spark;
 import spark.debug.DebugScreen;
 
@@ -11,9 +10,9 @@ public class NotitasServer {
 
 		Spark.port(9000);
 		DebugScreen.enableDebugScreen();
-		Spark.get("/", (req, res) -> "Holiiiiii");
-		Spark.get("/student", (req, res) -> repo.getAlumnoAsJSON());
-		Spark.get("/student/assignments", (req, res) -> repo.getAsignacionesAsJSON());
+		Spark.get("/", (req, res) -> "<marquee>Holiis!</marquee>");
+		Spark.get("/student", Controller::getAlumnoAsJSON);
+		Spark.get("/student/assignments", Controller::getAsignacionesAsJSON);
 
 
 //		SecurityService securityService = new SecurityService("god");

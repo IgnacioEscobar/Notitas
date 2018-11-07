@@ -11,28 +11,16 @@ public class Repositorio {
         return ourInstance;
     }
 
-    public Alumno getAlumno() {
+    public Alumno getAlumno(Long id) {
         return alumno;
-    }
-
-    public String getAlumnoAsJSON(){
-        return getAsJSON(getAlumno());
     }
 
     public void setAlumno(Alumno alumno) {
         this.alumno = alumno;
     }
 
-    public Asignaciones getAsignaciones(){
+    public Asignaciones getAsignaciones(Long id){
         return new Asignaciones(alumno.getTareas());
-    }
-
-    public String getAsignacionesAsJSON(){
-        return getAsJSON(getAsignaciones());
-    }
-
-    private String getAsJSON(Object object) {
-        return JSONParser.stringDesdeObjeto(object);
     }
 
     public void setAsignaciones(Asignaciones asignacion){
