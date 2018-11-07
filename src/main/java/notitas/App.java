@@ -12,7 +12,7 @@ import java.util.List;
 public class App extends Application{
 
     public static void main(String[] args){
-        NotitasClient cliente = new NotitasClient("http://notitas.herokuapp.com/");
+        NotitasClient cliente = new NotitasClient("localhost:9000");
         Configuracion.cliente = cliente;
 
         Alumno alumno = cliente.getAlumno();
