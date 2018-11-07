@@ -6,12 +6,17 @@ import spark.debug.DebugScreen;
 
 public class NotitasServer {
 	public static void main(String[] args) {
+		Fixture.init();
+		Repositorio repo = Repositorio.getInstance();
+
 		Spark.port(9000);
 		DebugScreen.enableDebugScreen();
 		Spark.get("/", (req, res) -> "Holiiiiii");
-		Spark.get("/student", (req, res) -> "Gabriel Ruderman");
-		Spark.get("/student/assignments", (req, res) -> "Diseño de Sistemas");
-		SecurityService securityService = new SecurityService("god");
+		Spark.get("/student", (req, res) -> repo.getAlumnoAsJSON());
+		Spark.get("/student/assignments", (req, res) -> repo.getAsignacionesAsJSON());
+
+
+//		SecurityService securityService = new SecurityService("god");
 		
 		
 		/*Spark.before((req, res) -> {

@@ -24,6 +24,11 @@ public class Tarea {
 		this.descripcion = descripcion;
 	}
 
+	public Tarea(String descripcion, List<String> notas) {
+		this.descripcion = descripcion;
+		this.notas = notas;
+	}
+
 	public List<String> getNotas() {
 		return notas;
 	}
