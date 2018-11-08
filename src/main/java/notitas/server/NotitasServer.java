@@ -13,6 +13,7 @@ public class NotitasServer {
 		Spark.get("/", (req, res) -> "<marquee>Holiis!</marquee>");
 		Spark.get("/student", Controller::getAlumnoAsJSON);
 		Spark.get("/student/assignments", Controller::getAsignacionesAsJSON);
+		Spark.post("/student",Controller::setAlumno);
 
 
 //		SecurityService securityService = new SecurityService("god");

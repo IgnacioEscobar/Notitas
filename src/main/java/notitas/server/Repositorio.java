@@ -15,7 +15,7 @@ public class Repositorio {
         return alumno;
     }
 
-    public void setAlumno(Alumno alumno) {
+    public void setAlumno(Long id, Alumno alumno) {
         this.alumno = alumno;
     }
 
@@ -30,5 +30,10 @@ public class Repositorio {
     private Alumno alumno;
 
     private Repositorio() {
+    }
+
+    public void actualizarAlumno(Long id, Alumno nuevoAlumno) {
+        nuevoAlumno.setTareas(alumno.getTareas());
+        alumno = nuevoAlumno;
     }
 }

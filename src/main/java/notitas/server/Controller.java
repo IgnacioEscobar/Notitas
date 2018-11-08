@@ -1,6 +1,7 @@
 package notitas.server;
 
 import notitas.json.JSONParser;
+import notitas.model.Alumno;
 import notitas.server.security.SecurityService;
 import spark.Request;
 import spark.Response;
@@ -32,5 +33,12 @@ public class Controller {
     public static String getAlumnoAsJSON(Request req, Response res){
         Long id = verify(req, res);
         return getAsJSON(repo.getAlumno(id));
+    }
+
+    public static String setAlumno(Request req, Response res) {
+        Long id = verify(req, res);
+        Alumno nuevoAlumno = JSONParser.objetoDesdeString(req.body(), Alumno.class);
+        repo.actualizarAlumno(id, nuevoAlumno);
+        return "done";
     }
 }
