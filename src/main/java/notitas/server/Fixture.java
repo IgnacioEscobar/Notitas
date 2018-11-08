@@ -27,6 +27,6 @@ public class Fixture {
         tarea3.evaluar("9");
         alumno.asignarTarea(tarea3);
 
-        repo.setAlumno(alumno);
+        repo.setAlumno(new Long(1), alumno);
     }
 }
