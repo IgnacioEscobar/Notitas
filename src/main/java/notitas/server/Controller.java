@@ -11,7 +11,8 @@ public class Controller {
     private static Repositorio repo = Repositorio.getInstance();
 
     private static Long verify(Request req, Response res){
-        SecurityService securityService = new SecurityService("3l_4leph");
+        String secret = System.getenv("NOTITAS_SECRET");
+        SecurityService securityService = new SecurityService(secret);
         Long userId = null;
         try {
             userId = securityService.user(req.headers("Authorization").replace("Bearer ", ""));
