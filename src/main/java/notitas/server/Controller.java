@@ -2,44 +2,31 @@ package notitas.server;
 
 import notitas.json.JSONParser;
 import notitas.model.Alumno;
-import notitas.server.security.SecurityService;
 import spark.Request;
 import spark.Response;
-import spark.Spark;
 
 public class Controller {
     private static Repositorio repo = Repositorio.getInstance();
-
-    private static Long verify(Request req, Response res){
-        String secret = System.getenv("NOTITAS_SECRET");
-        SecurityService securityService = new SecurityService(secret);
-        Long userId = null;
-        try {
-            userId = securityService.user(req.headers("Authorization").replace("Bearer ", ""));
-        } catch (Exception e) {
-            Spark.halt(401, "<h1><a href='https://www.youtube.com/watch?v=0Jx8Eay5fWQ'>Hack me </a></h1><br/><br/><br/><a href='https://www.youtube.com/watch?v=PtLmEARfStE'> El aleph </a>");
-        }
-        return userId;
-    }
 
     private static String getAsJSON(Object object) {
         return JSONParser.stringDesdeObjeto(object);
     }
 
     public static String getAsignacionesAsJSON(Request req, Response res){
-        Long id = verify(req, res);
-        return getAsJSON(repo.getAsignaciones(id));
+        return getAsJSON(repo.getAsignaciones(getUserId(req)));
+    }
+
+    private static Long getUserId(Request req) {
+        return req.session().attribute("userId");
     }
 
     public static String getAlumnoAsJSON(Request req, Response res){
-        Long id = verify(req, res);
-        return getAsJSON(repo.getAlumno(id));
+        return getAsJSON(repo.getAlumno(getUserId(req)));
     }
 
     public static String setAlumno(Request req, Response res) {
-        Long id = verify(req, res);
         Alumno nuevoAlumno = JSONParser.objetoDesdeString(req.body(), Alumno.class);
-        repo.actualizarAlumno(id, nuevoAlumno);
+        repo.actualizarAlumno(getUserId(req), nuevoAlumno);
         return "done";
     }
 }
