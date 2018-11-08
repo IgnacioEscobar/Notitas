@@ -4,17 +4,13 @@ import notitas.model.Alumno;
 import notitas.model.Tarea;
 import notitas.ui.utils.FormBuilder;
 import notitas.ui.utils.TableBuilder;
-import org.uqbar.arena.layout.ColumnLayout;
 import org.uqbar.arena.widgets.Button;
-import org.uqbar.arena.widgets.Label;
 import org.uqbar.arena.widgets.Panel;
-import org.uqbar.arena.widgets.tables.Column;
-import org.uqbar.arena.widgets.tables.Table;
 import org.uqbar.arena.windows.Dialog;
 import org.uqbar.arena.windows.SimpleWindow;
 import org.uqbar.arena.windows.WindowOwner;
 
-public class VentanaPrincipal extends SimpleWindow<Alumno>{
+public class VentanaPrincipal extends SimpleWindow<Alumno> {
 
     /**
      *
@@ -42,17 +38,17 @@ public class VentanaPrincipal extends SimpleWindow<Alumno>{
                 .buildOutput("Legajo:", "legajo")
                 .buildOutput("Usuario GitHub:", "usuarioGitHub");
 
-        new TableBuilder(mainPanel,Tarea.class,"tareas")
+        new TableBuilder(mainPanel, Tarea.class, "tareas")
                 .setNumberVisibleRows(5)
-                .buildColumn("Descripcion","descripcion",200)
-                .buildColumn("Nota","notaActual",50)
-                .buildColumn("Estado",200)
-                    .bindToPropertyWithTransformer("notaActual",new aprobacionNotaTransformer());
+                .buildColumn("Descripcion", "descripcion", 200)
+                .buildColumn("Nota", "notaActual", 50)
+                .buildColumn("Estado", 200)
+                .bindToPropertyWithTransformer("notaActual", new aprobacionNotaTransformer());
 
     }
 
     private void modificarAlumno() {
-        Dialog<Alumno> actualizarDatos = new VentanaActualizarDatos(this,this.getModelObject());
+        Dialog<Alumno> actualizarDatos = new VentanaActualizarDatos(this, this.getModelObject());
         actualizarDatos.open();
     }
 

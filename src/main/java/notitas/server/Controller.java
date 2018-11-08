@@ -12,7 +12,7 @@ public class Controller {
         return JSONParser.stringDesdeObjeto(object);
     }
 
-    public static String getAsignacionesAsJSON(Request req, Response res){
+    public static String getAsignacionesAsJSON(Request req, Response res) {
         return getAsJSON(repo.getAsignaciones(getUserId(req)));
     }
 
@@ -20,7 +20,7 @@ public class Controller {
         return req.session().attribute("userId");
     }
 
-    public static String getAlumnoAsJSON(Request req, Response res){
+    public static String getAlumnoAsJSON(Request req, Response res) {
         return getAsJSON(repo.getAlumno(getUserId(req)));
     }
 

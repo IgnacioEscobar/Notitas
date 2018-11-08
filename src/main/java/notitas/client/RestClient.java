@@ -14,7 +14,7 @@ class RestClient {
         this.url = url;
     }
 
-    String getResource(String resourceUrl){
+    String getResource(String resourceUrl) {
         WebResource resource = createWebResource(resourceUrl);
         ClientResponse response = resource
                 .accept("application/notitas.json")
@@ -23,7 +23,7 @@ class RestClient {
         return validateAndReturn(response);
     }
 
-    String putResource(String resourceUrl, String jsonString){
+    String putResource(String resourceUrl, String jsonString) {
         WebResource resource = createWebResource(resourceUrl);
         ClientResponse response = resource
                 .type("application/notitas.json")
@@ -34,20 +34,20 @@ class RestClient {
 
     /* PRIVATE METHODS */
 
-    private WebResource createWebResource (String resourceUrl) {
+    private WebResource createWebResource(String resourceUrl) {
         Client client = Client.create();
         return client.resource(url + "/" + resourceUrl);
     }
 
     private void validateResponse(ClientResponse response) {
-        int status  = response.getStatus();
-        if (status < 200 || status > 299 ) {
+        int status = response.getStatus();
+        if (status < 200 || status > 299) {
             throw new RuntimeException("Failed : HTTP error code : "
                     + response.getStatus());
         }
     }
 
-    private String validateAndReturn(ClientResponse response){
+    private String validateAndReturn(ClientResponse response) {
         validateResponse(response);
         return response.getEntity(String.class);
     }

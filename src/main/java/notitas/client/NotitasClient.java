@@ -14,15 +14,15 @@ public class NotitasClient {
         this.cliente = new RestClient(url);
     }
 
-    public Alumno getAlumno(){
+    public Alumno getAlumno() {
         return JSONParser.objetoDesdeString(cliente.getResource("student"), Alumno.class);
     }
 
-    public List<Tarea> getTareas(){
+    public List<Tarea> getTareas() {
         return JSONParser.objetoDesdeString(cliente.getResource("student/assignments"), Asignaciones.class).getTareas();
     }
 
-    public void putAlumno(Alumno alumno){
+    public void putAlumno(Alumno alumno) {
         cliente.putResource("student", JSONParser.stringDesdeObjeto(alumno));
     }
 }

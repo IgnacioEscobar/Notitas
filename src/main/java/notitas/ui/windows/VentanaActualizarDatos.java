@@ -1,18 +1,14 @@
 package notitas.ui.windows;
 
 import notitas.Configuracion;
+import notitas.model.Alumno;
 import notitas.ui.utils.FormBuilder;
 import org.uqbar.arena.aop.windows.TransactionalDialog;
-import org.uqbar.arena.layout.ColumnLayout;
 import org.uqbar.arena.widgets.Button;
-import org.uqbar.arena.widgets.Label;
 import org.uqbar.arena.widgets.Panel;
-import org.uqbar.arena.widgets.TextBox;
 import org.uqbar.arena.windows.WindowOwner;
 
-import notitas.model.Alumno;
-
-public class VentanaActualizarDatos extends TransactionalDialog<Alumno>{
+public class VentanaActualizarDatos extends TransactionalDialog<Alumno> {
 
     /**
      *
