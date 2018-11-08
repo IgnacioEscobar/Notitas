@@ -11,10 +11,10 @@ public class NotitasServer {
 		Spark.port(9000);
 		DebugScreen.enableDebugScreen();
 
-		Spark.get ("/"						, (req, res) -> "<marquee>Holiis!</marquee>");
-		Spark.get ("/student"				, Controller::getAlumnoAsJSON);
-		Spark.get ("/student/assignments"	, Controller::getAsignacionesAsJSON);
-		Spark.post("/student"				, Controller::setAlumno);
+		Spark.get("/"						, (req, res) -> "<marquee>Holiis!</marquee>");
+		Spark.get("/student"				, Controller::getAlumnoAsJSON);
+		Spark.get("/student/assignments"	, Controller::getAsignacionesAsJSON);
+		Spark.put("/student"				, Controller::setAlumno);
 	}
 
 }

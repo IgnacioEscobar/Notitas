@@ -23,7 +23,7 @@ public class Repositorio {
         return new Asignaciones(alumno.getTareas());
     }
 
-    public void setAsignaciones(Asignaciones asignacion){
+    public void setAsignaciones(Long id, Asignaciones asignacion){
         alumno.setTareas(asignacion.getTareas());
     }
 
