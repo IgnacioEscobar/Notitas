@@ -11,6 +11,7 @@ import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.EntityManager;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Query;
@@ -21,10 +22,12 @@ import javax.persistence.Transient;
 @Transactional
 @Entity
 @Table(name = "Alumno")
-public class Alumno extends PersistentObject {
+public class Alumno {
 	@Transient
     private static Alumno instancia = new Alumno();
-    @SerializedName("first_name")
+	@Id
+	private Long userID;
+	@SerializedName("first_name")
     private String nombre;
     @SerializedName("last_name")
     private String apellido;
@@ -40,9 +43,10 @@ public class Alumno extends PersistentObject {
     public Alumno() {
         tareas = new ArrayList<Tarea>();
     }
-    public Alumno(String nombre, Integer legajo, String usuarioGitHub, List<Tarea> tareas) {
+    public Alumno(String nombre, String apellido, Integer legajo, String usuarioGitHub, List<Tarea> tareas) {
         super();
         this.nombre = nombre;
+        this.apellido = apellido;
         this.legajo = legajo;
         this.usuarioGitHub = usuarioGitHub;
         this.tareas = tareas;
@@ -62,6 +66,10 @@ public class Alumno extends PersistentObject {
     public static void setInstance(Alumno alumno) {
         instancia = alumno;
     }
+    
+    public void setUserID(Long userID) {
+		this.userID = userID;
+	}
 
     public String getNombre() {
         return nombre;
@@ -88,12 +96,14 @@ public class Alumno extends PersistentObject {
     }
 
     public List<Tarea> getTareas() {
+    	/*
     	EntityManager manager =  PerThreadEntityManagers.getEntityManager();
     	Query query= manager.createNativeQuery("select *\r\n" + 
 		 		"from tarea T join alumno A on T.alumno_id = A.id\r\n" + 
 		 		"where A.legajo = ?1");	      
 		query.setParameter(1, legajo);		 
 		List<Tarea> tareas =  query.getResultList();
+		*/
         return tareas;
     }
 
