@@ -10,6 +10,7 @@ import org.uqbarproject.jpa.java8.extras.PerThreadEntityManagers;
 
 import notitas.json.Asignaciones;
 import notitas.model.Alumno;
+import notitas.model.Tarea;
 
 public class Repositorio {
     private static Repositorio ourInstance = new Repositorio();
@@ -42,12 +43,21 @@ public class Repositorio {
         this.alumno = alumno;
     }
 
-    Asignaciones getAsignaciones(Long id) {
-    	System.out.println("NO ESTA HECHO");
-        return new Asignaciones(alumno.getTareas());
+    Asignaciones getAsignaciones(Long userID) {
+    	EntityManager manager =  PerThreadEntityManagers.getEntityManager();
+    	
+    	Query query= manager.createNativeQuery("select T.descripcion, T.notas, T.nota_actual\r\n" + 
+		 		"from tarea T join alumno A on T.alumno_id = A.id\r\n" + 
+		 		"where id = ?1");
+	      
+		query.setParameter(1, userID);
+		 
+		List<Tarea> tareas =  query.getResultList();
+		
+		return new Asignaciones(tareas);
     }
 
-    void actualizarAlumno(Long id, Alumno nuevoAlumno) {
+    void actualizarAlumno(Long userID, Alumno nuevoAlumno) {
         nuevoAlumno.setTareas(alumno.getTareas());
         alumno = nuevoAlumno;
     }
