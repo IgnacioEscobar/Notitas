@@ -11,7 +11,7 @@ public class TareasBase {
 	public static void init() {
 		EntityManager manager =  PerThreadEntityManagers.getEntityManager();
     	
-    	Query query= manager.createNativeQuery("insert into tarea (descripcion, notas, notaActual, alumno_id)\r\n" + 
-		 		"values('moduloB', 9, 9, 1)");
+    	manager.createNativeQuery("insert into tarea (descripcion, notas, notaActual, alumno_id)\r\n" + 
+		 		"values('moduloB', 9, 9, 1)").executeUpdate();
     }
 }
