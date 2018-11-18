@@ -3,13 +3,17 @@ package notitas.model;
 import com.google.gson.annotations.SerializedName;
 import org.uqbar.commons.utils.Observable;
 import org.uqbar.commons.utils.Transactional;
+import org.uqbarproject.jpa.java8.extras.PerThreadEntityManagers;
 
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.EntityManager;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.Query;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
@@ -84,6 +88,12 @@ public class Alumno extends PersistentObject {
     }
 
     public List<Tarea> getTareas() {
+    	EntityManager manager =  PerThreadEntityManagers.getEntityManager();
+    	Query query= manager.createNativeQuery("select *\r\n" + 
+		 		"from tarea T join alumno A on T.alumno_id = A.id\r\n" + 
+		 		"where A.legajo = ?1");	      
+		query.setParameter(1, legajo);		 
+		List<Tarea> tareas =  query.getResultList();
         return tareas;
     }
 
