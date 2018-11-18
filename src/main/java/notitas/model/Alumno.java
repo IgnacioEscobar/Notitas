@@ -7,9 +7,18 @@ import org.uqbar.commons.utils.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.persistence.Transient;
+
 @Observable
 @Transactional
-public class Alumno {
+@Entity
+@Table(name = "Alumno")
+public class Alumno extends PersistentObject {
+	@Transient
     private static Alumno instancia = new Alumno();
     @SerializedName("first_name")
     private String nombre;
@@ -19,6 +28,9 @@ public class Alumno {
     private Integer legajo;
     @SerializedName("github_user")
     private String usuarioGitHub;
+    
+    @OneToMany
+    @JoinColumn(name = "alumno_id")
     private List<Tarea> tareas;
 
     public Alumno() {
