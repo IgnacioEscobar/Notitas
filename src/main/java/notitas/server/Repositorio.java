@@ -14,9 +14,10 @@ import notitas.model.Tarea;
 
 public class Repositorio {
     private static Repositorio ourInstance = new Repositorio();
-    private Alumno alumno;
+    EntityManager manager;
 
     private Repositorio() {
+        manager = PerThreadEntityManagers.getEntityManager();
     }
 
     public static Repositorio getInstance() {
@@ -24,41 +25,25 @@ public class Repositorio {
     }
 
     Alumno getAlumno(Long userID) {
-    	EntityManager manager =  PerThreadEntityManagers.getEntityManager();
-    	
-    	Query query= manager.createNativeQuery("select *\r\n" + 
-		 		"from alumno\r\n" + 
-		 		"where id = ?1");
-	      
-		query.setParameter(1, userID);
-		 
-		List<Alumno> alumnos =  query.getResultList();
-		
-		alumno = alumnos.get(0);
+        Alumno alumno = (Alumno) manager
+                .createQuery("from Alumno where id = ?1")
+                .setParameter(1, userID)
+                .getResultList()
+                .get(0);
 		
         return alumno;
     }
 
-    public void setAlumno(Long id, Alumno alumno) {
-        this.alumno = alumno;
-    }
-
     Asignaciones getAsignaciones(Long userID) {
-    	EntityManager manager =  PerThreadEntityManagers.getEntityManager();
-    	
-    	Query query= manager.createNativeQuery("select T.descripcion, T.notas, T.nota_actual\r\n" + 
-		 		"from tarea T join alumno A on T.alumno_id = A.id\r\n" + 
-		 		"where id = ?1");
-	      
-		query.setParameter(1, userID);
-		 
-		List<Tarea> tareas =  query.getResultList();
+       List tareas = manager
+                .createQuery("from Tarea where alumno_id = ?1")
+                .setParameter(1, userID)
+                .getResultList();
 		
 		return new Asignaciones(tareas);
     }
 
     void actualizarAlumno(Long userID, Alumno nuevoAlumno) {
-        nuevoAlumno.setTareas(alumno.getTareas());
-        alumno = nuevoAlumno;
+        manager.merge(nuevoAlumno);
     }
 }
