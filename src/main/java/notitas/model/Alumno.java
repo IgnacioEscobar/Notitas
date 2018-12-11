@@ -3,15 +3,30 @@ package notitas.model;
 import com.google.gson.annotations.SerializedName;
 import org.uqbar.commons.utils.Observable;
 import org.uqbar.commons.utils.Transactional;
+import org.uqbarproject.jpa.java8.extras.PerThreadEntityManagers;
 
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.EntityManager;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.Query;
+import javax.persistence.Table;
+import javax.persistence.Transient;
+
 @Observable
 @Transactional
-public class Alumno {
+@Entity
+@Table(name = "Alumno")
+public class Alumno extends PersistentObject {
+	@Transient
     private static Alumno instancia = new Alumno();
-    @SerializedName("first_name")
+	@SerializedName("first_name")
     private String nombre;
     @SerializedName("last_name")
     private String apellido;
@@ -19,14 +34,18 @@ public class Alumno {
     private Integer legajo;
     @SerializedName("github_user")
     private String usuarioGitHub;
+    
+    @OneToMany(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "alumno_id")
     private List<Tarea> tareas;
 
     public Alumno() {
         tareas = new ArrayList<Tarea>();
     }
-    public Alumno(String nombre, Integer legajo, String usuarioGitHub, List<Tarea> tareas) {
+    public Alumno(String nombre, String apellido, Integer legajo, String usuarioGitHub, List<Tarea> tareas) {
         super();
         this.nombre = nombre;
+        this.apellido = apellido;
         this.legajo = legajo;
         this.usuarioGitHub = usuarioGitHub;
         this.tareas = tareas;
@@ -71,9 +90,7 @@ public class Alumno {
         this.usuarioGitHub = usuarioGitHub;
     }
 
-    public List<Tarea> getTareas() {
-        return tareas;
-    }
+    public List<Tarea> getTareas() { return tareas; }
 
     public void setTareas(List<Tarea> tareas) {
         this.tareas = tareas;

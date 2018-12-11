@@ -2,12 +2,20 @@ package notitas.server;
 
 import notitas.model.Alumno;
 import notitas.model.Tarea;
+import org.uqbarproject.jpa.java8.extras.PerThreadEntityManagers;
 
-public class Fixture {
-    public static void init() {
-        Repositorio repo = Repositorio.getInstance();
+import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
+
+public class LoadDB {
+    public static void main(String[] args) {
+
+        EntityManager em = PerThreadEntityManagers.getEntityManager();
+        EntityTransaction trans = em.getTransaction();
+
         Alumno alumno = new Alumno();
-        alumno.setNombre("Roque Fort");
+        alumno.setNombre("Roque");
+        alumno.setNombre("Fort");
         alumno.setLegajo(12312413);
         alumno.setUsuarioGitHub("maiameee666");
 
@@ -27,6 +35,9 @@ public class Fixture {
         tarea3.evaluar("9");
         alumno.asignarTarea(tarea3);
 
-        repo.setAlumno(new Long(1), alumno);
+        trans.begin();
+        em.persist(alumno);
+        trans.commit();
+
     }
 }

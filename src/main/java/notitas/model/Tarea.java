@@ -6,12 +6,19 @@ import org.uqbar.commons.utils.Observable;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.ElementCollection;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
 @Observable
-public class Tarea {
+@Entity
+@Table(name = "Tarea")
+public class Tarea extends PersistentObject {
     @SerializedName("description")
     private String descripcion;
 
     @SerializedName("grades")
+    @ElementCollection
     private List<String> notas;
     private String notaActual = "-1";
 
