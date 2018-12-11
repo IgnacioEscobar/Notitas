@@ -1,13 +1,15 @@
 package notitas.server;
 
+import com.google.gson.Gson;
 import notitas.server.security.SecurityService;
 import spark.Spark;
 
 public class Router {
     static void route() {
+        Gson gson = new Gson();
         Spark.get("/", (req, res) -> "<marquee>Holiis!</marquee>");
-        Spark.get("/student", Controller::getAlumnoAsJSON);
-        Spark.get("/student/assignments", Controller::getAsignacionesAsJSON);
+        Spark.get("/student", Controller::getAlumno, gson::toJson);
+        Spark.get("/student/assignments", Controller::getAsignaciones, gson::toJson);
         Spark.put("/student", Controller::setAlumno);
 
         Spark.before((req, res) -> {
