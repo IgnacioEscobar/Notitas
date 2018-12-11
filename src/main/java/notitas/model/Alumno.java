@@ -23,11 +23,9 @@ import javax.persistence.Transient;
 @Transactional
 @Entity
 @Table(name = "Alumno")
-public class Alumno {
+public class Alumno extends PersistentObject {
 	@Transient
     private static Alumno instancia = new Alumno();
-	@Id
-	private Long userID;
 	@SerializedName("first_name")
     private String nombre;
     @SerializedName("last_name")
@@ -67,10 +65,6 @@ public class Alumno {
     public static void setInstance(Alumno alumno) {
         instancia = alumno;
     }
-    
-    public void setUserID(Long userID) {
-		this.userID = userID;
-	}
 
     public String getNombre() {
         return nombre;
@@ -96,17 +90,7 @@ public class Alumno {
         this.usuarioGitHub = usuarioGitHub;
     }
 
-    public List<Tarea> getTareas() {
-    	/*
-    	EntityManager manager =  PerThreadEntityManagers.getEntityManager();
-    	Query query= manager.createNativeQuery("select *\r\n" + 
-		 		"from tarea T join alumno A on T.alumno_id = A.id\r\n" + 
-		 		"where A.legajo = ?1");	      
-		query.setParameter(1, legajo);		 
-		List<Tarea> tareas =  query.getResultList();
-		*/
-        return tareas;
-    }
+    public List<Tarea> getTareas() { return tareas; }
 
     public void setTareas(List<Tarea> tareas) {
         this.tareas = tareas;
